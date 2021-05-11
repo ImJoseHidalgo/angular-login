@@ -61,7 +61,6 @@ export class AuthService {
     const url = `${this.baseUrl}/auth/renew`;
     const headers = new HttpHeaders()
       .set('x-token', localStorage.getItem('token') || '');
-    console.log(headers);
     
     return this.http.get<AuthResponse>(url, { headers })
       .pipe(

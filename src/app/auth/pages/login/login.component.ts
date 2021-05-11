@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -24,12 +25,10 @@ export class LoginComponent {
 
     this.AuthService.login( email, password )
       .subscribe(res => {
-        console.log(res);
-        
         if (res === true) {
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/home');
         } else {
-          alert(res);
+          Swal.fire('Error', res, 'error');
         }
       });
   }

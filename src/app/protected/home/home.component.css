@@ -1,0 +1,19 @@
+* {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 30px;
+}
+.home {
+  display: flex;
+  align-items: center;
+}
+p {
+  height: auto;
+  transform: translateX(0);
+}
+button {
+  width: auto;
+  padding-inline: 20px;
+}

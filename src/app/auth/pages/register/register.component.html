@@ -1,67 +1,45 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()" class="login100-form" autocomplete="off">
-              
-  <span class="login100-form-title p-b-49">
-      New User
-  </span>
-
-  <div class="wrap-input100 m-b-23">
-    <span class="label-input100">Name</span>
-    <input class="input100"
-           type="text" 
-           formControlName="name" 
-           placeholder="Ingrese su nombre">
-    <span class="focus-input100"></span>
-    <span *ngIf="invalidField('name')">El nombre es requerido</span>
+<form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+  <h3>Crea tu cuenta!</h3>
+  <div class="title">
+    <p>¿Ya tienes una cuenta?</p>
+    <a routerLink="/auth/login">Iniciar sesión</a>
   </div>
 
-  <div class="wrap-input100 m-b-23">
-      <span class="label-input100">Email</span>
-      <input class="input100"
-             type="email" 
-             formControlName="email" 
-             placeholder="Ingrese su email">
-        <span class="focus-input100"></span>
-        <span *ngIf="invalidField('email')">El correo es invalido</span>
+  <div class="input__container">
+    <span>Nombre de usuario</span>
+    <input  class="input"
+            type="text" 
+            formControlName="name" 
+            placeholder="Ingrese su nombre">
   </div>
-
-  <div class="wrap-input100">
-      <span class="label-input100">Password</span>
-      <input class="input100"
-             type="password"
-             formControlName="password" 
-             placeholder="Ingrese su contraseña">
-      <span class="focus-input100"></span>
-      <span *ngIf="invalidField('password')">minimo 6 caracteres</span>
+  <p *ngIf="invalidField('name'); else elseBlock">El nombre es requerido</p>
+  <ng-template #elseBlock><p></p></ng-template>
+  <div class="input__container">
+    <span>Correo electronico</span>
+    <input  class="input"
+            type="email" 
+            formControlName="email" 
+            placeholder="Ingrese su email">
   </div>
-
-  <div class="wrap-input100">
-      <span class="label-input100">Confirm</span>
-      <input class="input100"
-          type="password"
-          formControlName="password2" 
-          placeholder="Confirme su contraseña">
-      <span class="focus-input100"></span>
-      <span *ngIf="invalidField('password2')">Las contraseñas deben coincidir</span>
+  <p *ngIf="invalidField('email'); else elseBlock">El correo es invalido</p>
+  <ng-template #elseBlock></ng-template>
+  <div class="input__container">
+    <span>Contraseña</span>
+    <input  class="input"
+            type="password"
+            formControlName="password" 
+            placeholder="Ingrese su contraseña">
   </div>
-  
-  <div class="text-right p-t-8 p-b-31"></div>
-  
-  <div class="container-login100-form-btn">
-      <div class="wrap-login100-form-btn">
-          <div class="login100-form-bgbtn"></div>
-          <button type="submit" [disabled]="registerForm.invalid" class="login100-form-btn">
-              Registrarse
-          </button>
-      </div>
+  <p *ngIf="invalidField('password'); else elseBlock">minimo 6 caracteres</p>
+  <ng-template #elseBlock> </ng-template>
+  <div class="input__container">
+    <span>Repita su contraseña</span>
+    <input  class="input"
+            type="password"
+            formControlName="password2" 
+            placeholder="Confirme su contraseña">
   </div>
-
-  <div class="flex-col-c p-t-60">
-      <span class="txt1 p-b-17">
-          ¿Ya tienes una cuenta?
-      </span>
-
-      <a routerLink="/auth/login" class="txt2">
-          Iniciar sesión
-      </a>
-  </div>
+  <p *ngIf="invalidField('password2'); else elseBlock">Las contraseñas deben coincidir</p>
+  <ng-template #elseBlock> </ng-template>
+  <Button type="submit" [disabled]="registerForm.invalid">Registrarse</Button>
 </form>

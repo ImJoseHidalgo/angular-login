@@ -1,0 +1,8 @@
+<h1>Bienvenido {{user.name.charAt(0).toUpperCase() + user.name.slice(1)}}!</h1>
+<hr>
+
+<div class="home">
+  <h2>Hoy es:</h2>
+  <p>{{dateDay}}</p>
+</div>
+<button (click)="logout()">Cerrar sesión</button>

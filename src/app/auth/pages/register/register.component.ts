@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormValidatorService } from '../../../guards/formValidator/form-validator.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -32,11 +33,9 @@ export class RegisterComponent {
     this.AuthService.register( name, email, password )
       .subscribe(res => {
         if (res === true) {
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/home');
         } else {
-          console.log(res);
-          
-          alert(res);
+          Swal.fire('Error', res, 'error');
         }
       });
   };
@@ -47,9 +46,7 @@ export class RegisterComponent {
   }
 
   formSubmit() {
-    console.log(this.registerForm.value);
     this.registerForm.markAllAsTouched();
-    
   }
 
 }
